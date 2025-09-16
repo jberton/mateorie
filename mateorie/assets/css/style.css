@@ -1,0 +1,381 @@
+/*
+Theme Name: mateorie
+Theme URI: https://www.jeremieberton.fr
+Author: jberton
+Author URI: 
+Description: Thème Mateorie
+Version: 1.0
+*/
+
+/*GENERAL*/
+:root {
+	--btn-color: rgb(5,6,42);
+	--btn-color-hover: rgb(200,213,236);
+	--bg-site: linear-gradient(to right,  #000014 0%,#090b3c 55%,#1c2157 100%);
+	--bg-section: rgb(200, 213, 236);
+	--txt-color: rgb(240, 240, 240);
+	--header-height: 100px; /*pour gérer les liens d'ancrage avec le sticky menu*/
+  }
+
+/*  Chargement des polices Google */
+@font-face {
+	font-family: 'Gadugi';
+	src: url('../fonts/Gadugi/gadugi.woff2');
+  }
+@font-face {
+	font-family: 'LitSans';
+	src: url('../fonts/SpaceMono/LitSans-Medium.woff2');
+  }
+@font-face {
+	font-family: 'Imprint';
+	src: url('../fonts/Imprint/imprint-mt-shadow.woff2');
+  }
+
+
+/* Empecher les liens d’ancrage de défiler derrière le sticky menu */
+html {
+	scroll-padding-top: 6rem;
+  }
+
+body {
+	font-family: "Gadugi" !important;
+	background: var(--bg-site);
+	font-size: 16px;
+	margin:0;
+	padding:0;
+	border:0;
+	height: 100% !important;
+	width: 100%;
+}
+
+h1 {
+	font-family: "LitSans" !important;
+	font-weight: 400 !important;
+	font-size: 2.5rem !important;
+	margin:0;
+	padding:0;
+}
+
+h2 {
+	font-family: "LitSans" !important;
+	font-weight: 400 !important;
+	font-size: 2.5rem;
+}
+
+p {
+	font-family: "Gadugi" !important;
+	font-size: 1.5rem !important;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.page-container {
+	max-width: 1200px;
+	margin: auto;
+}
+
+.page {
+	max-width: 1150px !important;
+	margin: auto !important;
+}
+
+/* Mise en forme du bouton action */
+.btn-action {
+    border: 2px solid var(--btn-color);
+	border-radius: 30px;
+	padding: 12px;
+    font-size: 18px;
+	transition: all .5s;
+	-webkit-transition: all .5s;
+}
+
+
+.btn-action:active {
+	transform: translate(0, 5px);
+	-webkit-transform: translate(0, 5px);
+	border-bottom: 1px solid;
+}
+
+.btn-action:hover {
+	color: var(--btn-color);
+    background-color: var(--btn-color-hover);
+}
+
+/* Footer */
+footer {
+	width: 1200px;
+	margin:auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+}
+
+footer ul {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	gap:40px;
+	margin-top: -20px;
+}
+
+footer a {
+	color: black;
+	text-decoration: none;
+	position: relative;
+	font-size: 16px;
+	transition: 0.4s;
+}
+
+footer a:hover {
+	color: rgb(219,136,9);
+  }
+
+footer a:before {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 2px;
+	background-color: rgb(249,177,43);
+	bottom: -3px;
+	left: 0;
+	transition: width 0.5s;
+}
+
+footer a:hover::before {
+  width: 100%;
+}
+
+.line-top-footer{
+	border-top: 1px solid black;
+	width:100%;
+	position: relative;
+}
+
+
+/* Header */
+header {
+	width: 100%;
+	position: fixed;
+	z-index: 10;
+	background-color: #FFF;
+	height: var(--header-height);
+}
+
+header ul {
+	display: flex;
+	flex-direction: row;
+	list-style-type:none;
+	padding: 0;
+	margin: 0;
+}
+
+header li{
+	padding-left: 20px;
+	text-decoration: none;
+  }
+
+header li a{
+	text-decoration: none;
+	color: black;
+	font-size: 16px;
+  }
+
+.logo img {
+	height: 90px;	
+}
+
+.nom-logo p {
+	font-family: "Imprint" !important;
+	font-size: 50px !important;
+}
+
+/* MENU Navigation bar */
+nav {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	height: 100px;
+	border-bottom: 2px solid var(--bg-section);
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
+}
+
+.navbar-nav {
+    list-style: none;
+}
+
+.navbar-nav li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.navbar-nav a {
+	text-decoration: none;
+	position: relative;
+	font-size: 20px;
+	transition: 0.4s;
+}
+
+.navbar-nav a:hover {
+	color: var(--btn-color);
+}
+
+.navbar-nav a:before {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 4px;
+	background-color: var(--btn-color-hover);
+	bottom: -5px;
+	left: 0;
+	transition: width 0.5s;
+}
+
+.navbar-nav a:hover::before {
+  width: 100%;
+}
+
+.logo a {
+	display:flex;
+	align-items: center;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+	gap: 10px;
+}
+
+.burger {
+    display: none;
+}
+
+.line {
+	height: 3px;
+	background-color: #000;
+	display: block;
+	margin: auto;
+	margin-block: 2px;
+	width: 20px;
+}
+
+/* MENU Navigation bar - Animation du menu burger */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* MENU Navigation bar - Ajouter une toile de fond au menu mobile lorsqu’il est actif.  */
+.menu-backdrop {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9; /* Ensure it's below the nav-links but above other content */
+}
+
+.fixed-position {
+    overflow: hidden;
+    height: 100%;
+}
+
+
+/* MENU Navigation bar - Responsive */
+@media screen and (max-width: 768px) {
+    nav{
+		justify-content: space-around;
+	}
+	
+	.navbar-nav {
+        position: absolute;
+        right: 0;
+        height: 100vh;
+        top: 100px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+		justify-content: flex-start;
+		gap:20px;
+        width: 100%;
+        transform: translateX(-770px);
+        transition: transform 0.5s ease-in-out;
+		padding-top: 30px;
+    }
+
+    .navbar-nav li {
+        opacity: 0;
+    }
+
+	.navbar-nav li a {
+		color: black;
+		font-size: 44px;
+	}
+
+    .burger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .burger div {
+        width: 25px;
+        height: 3px;
+        margin: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-active {
+        transform: translateX(0);
+    }
+
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .navbar-nav li {
+        animation: navLinkFade 0.5s ease forwards 0.5s;
+    }
+
+	.line-top-footer{
+		border-top:0;
+	}
+
+}
+
+/* Responsive Design - largeur de bloc header conteneur principal */
+@media screen and (max-width:1200px){
+	header {
+		width: 100%;
+	}
+	#navbar {
+		justify-content: space-around;
+	}
+	.page-container {
+		width: 90%;
+	}
+	footer {
+		width: 100%;
+	}
+}
+
+
