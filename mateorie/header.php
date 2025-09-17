@@ -23,12 +23,15 @@
 			<!-- image logo -->
 			<div class="logo">
 				<a href="<?= get_site_url() ?>">
-					<img src="<?= get_stylesheet_directory_uri() . "/assets/images/logo-mateorie.jpg" ?>" alt="Logo Mateorie">
+					<img src="<?= get_stylesheet_directory_uri() . "/assets/images/logo-mateorie-fondblanc.jpg" ?>" alt="Logo Mateorie">
+					<p class="notranslate">MATEORIE</p>
 				</a>
 			</div>
 			<!-- Boutons Nous contacter + Etre rappelé -->
-			<a href="#" class="btn-action">Nous contacter</a>
-			<a href="#" class="btn-action">Être rappelé</a>
+			 <div class="btn-contact-accueil">
+				<a href="#" class="btn-action">Nous contacter</a>
+				<a href="#" class="btn-action">Être rappelé</a>
+			</div>
 
 			<!-- menu burger -->
 			<div class="burger" aria-expanded="false">

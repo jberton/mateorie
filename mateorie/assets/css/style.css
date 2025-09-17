@@ -52,6 +52,7 @@ h1 {
 	font-family: "LitSans" !important;
 	font-weight: 400 !important;
 	font-size: 2.5rem !important;
+	color: var(--txt-color) !important;
 	margin:0;
 	padding:0;
 }
@@ -59,12 +60,11 @@ h1 {
 h2 {
 	font-family: "LitSans" !important;
 	font-weight: 400 !important;
-	font-size: 2.5rem;
+	font-size: 2.5rem !important;
 }
 
 p {
 	font-family: "Gadugi" !important;
-	font-size: 1.5rem !important;
 }
 
 a {
@@ -73,12 +73,10 @@ a {
 }
 
 .page-container {
-	max-width: 1200px;
 	margin: auto;
 }
 
 .page {
-	max-width: 1150px !important;
 	margin: auto !important;
 }
 
@@ -104,61 +102,102 @@ a {
     background-color: var(--btn-color-hover);
 }
 
-/* Footer */
+/* FOOTER */
 footer {
 	width: 1200px;
-	margin:auto;
+	margin: auto;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	font-size: 16px;
+	color: var(--txt-color);
+}
+
+/* Footer - bloc du haut */
+.top-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+/* Footer - bouton contacter */
+.top-footer-contact {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+}
+
+.top-footer p {
+	font-family: 'Imprint' !important;
+	font-size: 60px !important;
+}
+
+.top-footer img {
+	width: 70px;
+	object-fit: contain;
+}
+
+/* Footer - menu footer */
+footer ul a {
+	color: var(--txt-color);
+	position: relative;
+	font-size: 16px;
+	transition: 0.4s;
 }
 
 footer ul {
 	list-style-type: none;
 	padding: 0;
 	display: flex;
-	flex-direction: row;
-	gap:40px;
-	margin-top: -20px;
+	flex-direction: column;
+	justify-content: center;
+	gap: 10px;
 }
 
-footer a {
-	color: black;
-	text-decoration: none;
-	position: relative;
-	font-size: 16px;
-	transition: 0.4s;
-}
-
-footer a:hover {
-	color: rgb(219,136,9);
+footer ul a:hover {
+	color: var(--btn-color-hover);
   }
 
-footer a:before {
+footer ul li a:before {
 	content: "";
 	position: absolute;
 	width: 0;
 	height: 2px;
-	background-color: rgb(249,177,43);
+	background-color: var(--btn-color-hover);
 	bottom: -3px;
 	left: 0;
 	transition: width 0.5s;
 }
 
-footer a:hover::before {
+footer ul li a:hover::before {
   width: 100%;
 }
 
-.line-top-footer{
-	border-top: 1px solid black;
-	width:100%;
+/* Footer - bloc du bas */
+.bottom-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.bottom-footer img {
+	width: 8%;
+}
+
+.separateur-footer {
+	border-top: 1px solid var(--txt-color);
+	width:60%;
 	position: relative;
 }
 
 
-/* Header */
+
+/* HEADER */
 header {
 	width: 100%;
 	position: fixed;
@@ -168,8 +207,6 @@ header {
 }
 
 header ul {
-	display: flex;
-	flex-direction: row;
 	list-style-type:none;
 	padding: 0;
 	margin: 0;
@@ -192,23 +229,90 @@ header li a{
 
 .nom-logo p {
 	font-family: "Imprint" !important;
-	font-size: 50px !important;
+	font-size: 60px !important;
 }
+
+/* ANIMATIONS SVG */
+
+/* ANIMATIONS SVG - EXPLOSION DE CERCLES */
+.conteneur-explosion {
+	margin: 0;
+  	display: flex;
+  	justify-content: center !important;
+}
+
+.svg-explosion {
+	width: 800px;
+	height: 600px;
+	overflow: visible;
+	display: block;
+}
+/* Cercle central */
+.center {
+	fill: rgb(192,209,236);
+}
+/* Particules au repos */
+.particle {
+	opacity: 0;
+	transform-box: fill-box;
+	transform-origin: center;
+}
+
+/* ANIMATIONS SVG - CONNECTION DE POINTS */
+
+
+/* ANIMATIONS SVG - CROISSANCE */
+.croissance line {
+  stroke: #c0d1eb;
+  stroke-width: 2;
+}
+
+.croissance circle {
+  fill: #c0d1eb;
+}
+
+.croissance .highlight {
+  fill: #f6ff00;
+}
+
+/* Animation générique */
+.bounce line,
+.bounce circle:last-child {
+  transform-origin: center;
+  animation: bounce 4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(calc(-1 * var(--bounce-height))); }
+}
+
 
 /* MENU Navigation bar */
 nav {
 	position: relative;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
 	align-items: center;
 	height: 100px;
 	border-bottom: 2px solid var(--bg-section);
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
 }
 
+.btn-contact-accueil{
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	width: 40%;
+}
+
 .navbar-nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
     list-style: none;
+	width: 40%;
 }
 
 .navbar-nav li {
@@ -242,13 +346,29 @@ nav {
   width: 100%;
 }
 
+.logo {
+	width: 20%;
+}
+
 .logo a {
 	display:flex;
+	flex-direction: column;
 	align-items: center;
     color: black;
     text-decoration: none;
     font-size: 20px;
-	gap: 10px;
+}
+
+.logo img {
+	height: 70px;
+}
+
+.logo p {
+	height: 5px;
+	font-family: 'Imprint' !important;
+	font-size: 17px !important;
+	color: var(--btn-color);
+	margin-top: 0px;
 }
 
 .burger {
@@ -378,4 +498,43 @@ nav {
 	}
 }
 
+
+/* ACCUEIL */
+
+/* Accueil - rond bleu autour des numéros */
+.badge {
+    width: 70px;
+    height: 70px;
+    background: rgb(40,53,131);
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    /* taille du chiffre relative à la taille du badge */
+    font-size: 30px;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    user-select: none;
+}
+
+/* petit ajustement responsive : si le badge est très petit, réduire le poids */
+@media (max-width:400px){
+    .badge{ font-weight:600; }
+}
+
+/* Accueil - rond bleu en dessous de croissance */
+.rond-croissance {
+	width: 300px;
+    height: 300px;
+    background: rgb(40,53,131);
+    border-radius: 50%;
+	padding: 40px;
+	font-size: 20px;
+	display: inline-flex;
+    align-items: center !important;
+	justify-content: center !important;
+	text-align: center;
+}
 
