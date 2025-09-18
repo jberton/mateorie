@@ -548,8 +548,31 @@ nav {
 	text-align: center;
 }
 
-/* Accompagnement des dirigeants - image avec rond blanc au milieu et fleches */
+/* Notre équipe - rond pour les photos */
+.rond-photo {
+	width: 300px !important;
+    height: 300px;
+	border-radius: 50% !important;
+	opacity: 1 !important;
+	transition: all 0.5s ease-out !important;
+	cursor: pointer;
+}
 
+.rond-photo:hover {
+	opacity: 0.6 !important;
+}
+
+/* Notre équipe - masquer ou afficher un oeil sur les photos si hover */
+.icon-eye {
+	opacity:0 !important;
+	transition: all 0.5s ease-out !important;
+}
+
+.rond-photo:hover > .icon-eye {
+	opacity:1 !important;
+}
+
+/* Accompagnement des dirigeants - image avec rond blanc au milieu et fleches */
 .container-dirigeants {
   position: relative;
   width: 800px;
@@ -588,7 +611,7 @@ nav {
   transition: opacity 0.5s ease;
 }
 
-/* Exemple de positions */
+/* Positions des items */
 .top-left { top: 20%; left: 5%; }
 .top-right { top: 20%; right: 5%; }
 .right { top: 65%; right: 0%; transform: translateY(-50%); }
