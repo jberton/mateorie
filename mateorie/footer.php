@@ -3,7 +3,7 @@
 				<!-- bouton contact -->
 				<a href="#" class="top-footer-contact">
 					<p>Nous <br>contacter</p>
-					<img src="<?= get_stylesheet_directory_uri() . "/assets/images/Nous-contacter-mateorie.png" ?>" alt="Contacter Mateorie">
+					<div class="fleche-contact"></div>
 				</a>
 				<!-- menu footer -->
 				<?php

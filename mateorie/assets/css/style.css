@@ -60,7 +60,6 @@ h1 {
 h2 {
 	font-family: "LitSans" !important;
 	font-weight: 400 !important;
-	font-size: 2.5rem !important;
 }
 
 p {
@@ -127,7 +126,15 @@ footer {
 .top-footer-contact {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 	gap: 30px;
+}
+
+.top-footer-contact:hover .fleche-contact {
+	width: 80px;
+	height: 80px;
+	background: url('http://localhost/mateorie/wp-content/themes/mateorie/assets/images/Nous-contacter-mateorie-hover.png');
+	background-size: contain;
 }
 
 .top-footer p {
@@ -135,9 +142,12 @@ footer {
 	font-size: 60px !important;
 }
 
-.top-footer img {
-	width: 70px;
-	object-fit: contain;
+.fleche-contact {
+	width: 80px;
+	height: 80px;
+	background: url('http://localhost/mateorie/wp-content/themes/mateorie/assets/images/Nous-contacter-mateorie.png');
+	background-size: contain;
+	transition: all 0.3s ease-in-out;
 }
 
 /* Footer - menu footer */
@@ -538,3 +548,56 @@ nav {
 	text-align: center;
 }
 
+/* Accompagnement des dirigeants - image avec rond blanc au milieu et fleches */
+
+.container-dirigeants {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  margin: auto;
+}
+
+.center-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); /* start petit */
+  width: 220px;
+  height: 220px;
+  background: white;
+  color: #0a123d;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+  z-index: 2;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+}
+
+.item {
+  position: absolute;
+  width: 200px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  opacity: 0; /* start invisible */
+  transition: opacity 0.5s ease;
+}
+
+/* Exemple de positions */
+.top-left { top: 20%; left: 5%; }
+.top-right { top: 20%; right: 5%; }
+.right { top: 65%; right: 0%; transform: translateY(-50%); }
+.bottom { bottom: 15%; left: 50%; transform: translateX(-50%); }
+.left { top: 60%; left: 0%; transform: translateY(-50%); }
+
+canvas#lines-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* derrière les textes et le cercle */
+}
