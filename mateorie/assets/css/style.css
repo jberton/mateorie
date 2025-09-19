@@ -24,13 +24,17 @@ Version: 1.0
   }
 @font-face {
 	font-family: 'LitSans';
-	src: url('../fonts/SpaceMono/LitSans-Medium.woff2');
+	src: url('../fonts/LitSans/LitSans-Medium.woff2');
   }
 @font-face {
 	font-family: 'Imprint';
 	src: url('../fonts/Imprint/imprint-mt-shadow.woff2');
   }
 
+/* Masquer le titre des pages */
+.post-title {
+	opacity: 0;
+}
 
 /* Empecher les liens d’ancrage de défiler derrière le sticky menu */
 html {
@@ -81,25 +85,29 @@ a {
 
 /* Mise en forme du bouton action */
 .btn-action {
-    border: 2px solid var(--btn-color);
+	color: var(--txt-color);
+  border: 2px solid var(--txt-color);
 	border-radius: 30px;
 	padding: 12px;
-    font-size: 18px;
+  font-size: 18px;
 	transition: all .5s;
 	-webkit-transition: all .5s;
-}
-
-
-.btn-action:active {
-	transform: translate(0, 5px);
-	-webkit-transform: translate(0, 5px);
-	border-bottom: 1px solid;
 }
 
 .btn-action:hover {
 	color: var(--btn-color);
     background-color: var(--btn-color-hover);
 }
+
+/* Mise en forme du bouton action après le scroll */
+.btn-contact-accueil.is-visible .btn-action {
+	border: 2px solid var(--btn-color-hover);
+}
+
+.btn-contact-accueil.is-visible .btn-action {
+	color: var(--btn-color) !important;
+}
+
 
 /* FOOTER */
 footer {
@@ -206,14 +214,18 @@ footer ul li a:hover::before {
 }
 
 
-
 /* HEADER */
 header {
 	width: 100%;
 	position: fixed;
 	z-index: 10;
-	background-color: #FFF;
+	background-color: none;
 	height: var(--header-height);
+	transition: 0.3s;
+}
+
+header.is-visible {
+  	background-color: white;
 }
 
 header ul {
@@ -229,73 +241,21 @@ header li{
 
 header li a{
 	text-decoration: none;
-	color: black;
+	color: var(--txt-color);
 	font-size: 16px;
   }
 
+header.is-visible li a{
+	color: black;
+  }
+
 .logo img {
-	height: 90px;	
+	height: 70px;	
 }
 
 .nom-logo p {
 	font-family: "Imprint" !important;
 	font-size: 60px !important;
-}
-
-/* ANIMATIONS SVG */
-
-/* ANIMATIONS SVG - EXPLOSION DE CERCLES */
-.conteneur-explosion {
-	margin: 0;
-  	display: flex;
-  	justify-content: center !important;
-}
-
-.svg-explosion {
-	width: 800px;
-	height: 600px;
-	overflow: visible;
-	display: block;
-}
-/* Cercle central */
-.center {
-	fill: rgb(192,209,236);
-}
-/* Particules au repos */
-.particle {
-	opacity: 0;
-	transform-box: fill-box;
-	transform-origin: center;
-}
-
-/* ANIMATIONS SVG - CONNECTION DE POINTS */
-
-
-/* ANIMATIONS SVG - CROISSANCE */
-.croissance line {
-  stroke: #c0d1eb;
-  stroke-width: 2;
-}
-
-.croissance circle {
-  fill: #c0d1eb;
-}
-
-.croissance .highlight {
-  fill: #f6ff00;
-}
-
-/* Animation générique */
-.bounce line,
-.bounce circle:last-child {
-  transform-origin: center;
-  animation: bounce 4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
-  animation-delay: var(--delay);
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(calc(-1 * var(--bounce-height))); }
 }
 
 
@@ -338,6 +298,11 @@ nav {
 }
 
 .navbar-nav a:hover {
+	color: var(--txt-color);
+}
+
+/* changer la couleur quand le menu est scrollé */
+.navbar-nav.is-visible a:hover {
 	color: var(--btn-color);
 }
 
@@ -369,16 +334,58 @@ nav {
     font-size: 20px;
 }
 
-.logo img {
-	height: 70px;
+/* changer le logo quand le menu est scrollé */
+.logo {
+  position: relative;
+  display: inline-block;
+  height: 90px;
 }
+
+.logo > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* image par défaut */
+.logo img.default {
+  opacity: 1;
+  display: block;
+}
+
+/* image alternative */
+.logo img.alt {
+  opacity: 0;
+  display: none;
+}
+
+/* quand le menu est visible → inversion */
+.is-visible .logo img.default {
+  opacity: 0;
+  display: none;
+}
+
+.is-visible .logo img.alt {
+  opacity: 1;
+  display: block;
+}
+
+
+
 
 .logo p {
 	height: 5px;
 	font-family: 'Imprint' !important;
 	font-size: 17px !important;
-	color: var(--btn-color);
+	color: var(--txt-color);
 	margin-top: 0px;
+}
+
+/* changer la couleur texte sous le logo quand le menu est scrollé */
+ .is-visible.logo p {
+	color: var(--btn-color);
 }
 
 .burger {
@@ -511,6 +518,61 @@ nav {
 
 /* ACCUEIL */
 
+/* ANIMATIONS SVG */
+
+/* ANIMATIONS SVG - EXPLOSION DE CERCLES */
+.conteneur-explosion {
+	margin: 0;
+  	display: flex;
+  	justify-content: center !important;
+}
+
+.svg-explosion {
+	width: 800px;
+	height: 600px;
+	overflow: visible;
+	display: block;
+}
+/* Cercle central */
+.center {
+	fill: rgb(192,209,236);
+}
+/* Particules au repos */
+.particle {
+	opacity: 0;
+	transform-box: fill-box;
+	transform-origin: center;
+}
+
+/* ANIMATIONS SVG - CONNECTION DE POINTS */
+
+/* ANIMATIONS SVG - CROISSANCE */
+.croissance line {
+  stroke: #c0d1eb;
+  stroke-width: 2;
+}
+
+.croissance circle {
+  fill: #c0d1eb;
+}
+
+.croissance .highlight {
+  fill: #f6ff00;
+}
+
+/* Animation générique */
+.bounce line,
+.bounce circle:last-child {
+  transform-origin: center;
+  animation: bounce 4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(calc(-1 * var(--bounce-height))); }
+}
+
 /* Accueil - rond bleu autour des numéros */
 .badge {
     width: 70px;
@@ -572,6 +634,76 @@ nav {
 	opacity:1 !important;
 }
 
+/* Les outils - bloque de mots qui s'affichent avec un effet */
+
+/* Wrapper contenant l'écran et le pied */
+  .pc-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centre tout horizontalement */
+  }
+
+  .pc-screen {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    background: var(--btn-color-hover);
+    border-radius: 15px;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    overflow: hidden;
+  }
+
+  .pc-screen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background: #777;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  /* Pied vertical centré */
+  .pc-stand {
+    width: 40px;
+    height: 60px;
+    background: #444;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    margin-top: -10px; /* rapproche du bas de l'écran si nécessaire */
+  }
+
+  /* Socle horizontal centré */
+  .pc-foot {
+    width: 200px;
+    height: 15px;
+    background: var(--txt-color);
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    margin-top: -5px;
+  }
+
+  .word-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 300px;
+    padding: 10px 15px;
+    background: var(--btn-color);
+    color: var(--txt-color);
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    white-space: normal;
+    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+    opacity: 0;
+    transition: transform 3s ease, opacity 3s ease;
+  }
+
 /* Accompagnement des dirigeants - image avec rond blanc au milieu et fleches */
 .container-dirigeants {
   position: relative;
@@ -623,4 +755,58 @@ canvas#lines-canvas {
   top: 0;
   left: 0;
   z-index: 1; /* derrière les textes et le cercle */
+}
+
+/* CONTACT - Formulaire de contact */
+.wpcf7-form label{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: var(--txt-color);
+}
+
+.wpcf7-form-control-wrap input {
+	width: 350px !important;
+	height: 40px;
+	border:solid 1px lightgray;
+	border-radius: 10px !important;
+	padding: 0 10px;
+	font-size: 16px;
+	color: var(--btn-color);
+  margin-top: 5px;
+}
+
+.wpcf7-form-control-wrap textarea {
+	width: 350px;
+	height: 210px;
+	border:solid 1px lightgray;
+	border-radius: 10px;
+	padding: 5px 10px;
+	font-size: 16px;
+	color: black;
+  margin-top: 5px;
+}
+
+.wpcf7-submit {
+	margin-top: 20px;
+	height: 50px;
+	width: 255px;
+}
+
+.btn-action-form {
+	color: var(--txt-color);
+  border: 3px solid var(--txt-color);
+  background-color: transparent;
+	border-radius: 30px;
+	padding: 12px;
+  font-size: 18px;
+  cursor: pointer;
+	transition: all .5s;
+	-webkit-transition: all .5s;
+}
+
+.btn-action-form:hover {
+	color: var(--btn-color);
+  background-color: var(--btn-color-hover);
 }

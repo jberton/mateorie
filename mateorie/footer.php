@@ -1,7 +1,7 @@
 		<footer>
 			<div class="top-footer">
 				<!-- bouton contact -->
-				<a href="#" class="top-footer-contact">
+				<a href="<?= get_site_url() ?>/nous-contacter/" class="top-footer-contact">
 					<p>Nous <br>contacter</p>
 					<div class="fleche-contact"></div>
 				</a>
@@ -23,8 +23,8 @@
 				<!-- séparateur -->
 				<div class="separateur-footer"></div>
 				<!-- liens mentions légales + pol. conf. -->
-				<a href="#">Mentions légales</a>
-				<a href="#">Politique de confidentialité</a>
+				<a href="<?= get_site_url() ?>/mentions-legales/">Mentions légales</a>
+				<a href="<?= get_site_url() ?>/politique-confidentialite/">Politique de confidentialité</a>
 			</div>
 
 			<p>© Copyright 2025 – Mateorie. Tous droits réservés</p>

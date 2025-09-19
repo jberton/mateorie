@@ -7,32 +7,32 @@
 		<?php wp_head(); ?>
 	</head>
 	<body style="overflow: visible;">
-	<header>
-
+	<header class="animate-on-scroll">
 		<nav id="navbar">
 			<!-- menu principal -->
 			<?php
 				$defaults = array(
 				'theme_location' => 'top', 
 				'container' => '', 
-				'menu_class' => 'nav navbar-nav menu__list', 
+				'menu_class' => 'nav navbar-nav animate-on-scroll menu__list', 
 				'menu' => 'main-menu'
 				);
 				wp_nav_menu($defaults);
 			?>
 			<!-- image logo -->
-			<div class="logo">
+			<div class="logo animate-on-scroll">
 				<a href="<?= get_site_url() ?>">
-					<img src="<?= get_stylesheet_directory_uri() . "/assets/images/logo-mateorie-fondblanc.jpg" ?>" alt="Logo Mateorie">
+					<img class="default" src="<?= get_stylesheet_directory_uri() . "/assets/images/logo-mateorie-fondbleu.png" ?>" alt="Logo Mateorie">
+					<img class="alt" src="<?= get_stylesheet_directory_uri() . "/assets/images/logo-mateorie-fondblanc.png" ?>" alt="Logo Mateorie">
 					<p class="notranslate">MATEORIE</p>
 				</a>
 			</div>
+
 			<!-- Boutons Nous contacter + Etre rappelé -->
-			 <div class="btn-contact-accueil">
-				<a href="#" class="btn-action">Nous contacter</a>
+			 <div class="btn-contact-accueil animate-on-scroll">
+				<a href="<?= get_site_url() ?>/nous-contacter/" class="btn-action">Nous contacter</a>
 				<a href="#" class="btn-action">Être rappelé</a>
 			</div>
-
 			<!-- menu burger -->
 			<div class="burger" aria-expanded="false">
 				<div class="line line1"></div>
@@ -40,5 +40,4 @@
 				<div class="line line3"></div>
 			</div>
 		</nav>
-
 	</header>
